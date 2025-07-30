@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: 36_Config_Server_App
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Bharat342/configuration_properties.git
+          clone-on-start: true

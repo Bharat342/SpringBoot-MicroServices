@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: CLOUD-API-GATEWAY
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # it should locate all the backend APIs
+          lower-case-service-id: true # service id can be available in the lowercase format also.
+      routes: # This routing are not Daily configuration it is only one Time configuration.
+        - id: a
+          uri: lb://WELCOME-API # in the service registry with this service name multiple url can be available it has to route the request based on RoundRobin fashion
+          predicates:
+            - Path=/welcome # Whenever the request comes to /welcome then the request will go to WELCOME-API it may have 1 url it may have 2 url
+        - id: b
+          uri: lb://GREET-API
+          predicates:
+            - Path=/greet # Whenever the request comes to /greet then the request will go to GREET-API it may have 1 url it may have 2 url 
+
+server:
+  port: 3333
+ 

@@ -1,0 +1,10 @@
+server:
+  port: 9090
+spring:
+  config:
+    import:
+    - optional:configserver:http://localhost:8080
+  application:
+    name: greet # it will print the greet.yml data, it we make greet to welcome then it will print welcome.yml data 
+# whatever the name we are configuring for the application that name should match with the githun repo's file name.
+# So based on this name our application connected to the config server then config server should load the github from the greet.yml file into our application.
